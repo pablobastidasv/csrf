@@ -1,0 +1,43 @@
+@startuml
+
+title CSRF validation flow \n
+
+skinparam activity {
+  BackgroundColor<< Continue >> #99ff99
+  BackgroundColor<< 403 >> #ff8080
+}
+
+(*) --> "Obtain HTTP request method"
+if  "toValidate()" then
+    note left: HTTP method \nis different to\n GET, TRACE,\n OPTIONS or HEAD
+    -right-> [yes] "Obtain authentication status"
+
+    if "isAuthorizedRequest()" then
+        -right-> [yes] "Obtain XSRF-TOKEN from cookie"
+        if "isNull()" then
+            -down-> [no] "Obtain X-XSRF-TOKEN from header \n or from `_csrf` parameter (form field)"
+            if "isNull()" then
+                -down-> [no] "Compare XSRF tokens"
+                if "areEquals()" then
+                    --> [yes] "Continue" <<Continue>>
+                    Note left: Continue processing
+                else
+                    --> [No] "404: Forbidden" <<403>>
+                    Note left: Send response\n to client
+                endif
+            else
+                --> [yes] "404: Forbidden"
+            endif
+         else
+            --> [yes] "404: Forbidden"
+        endif
+    else
+        --> [No] "Continue"
+    endif
+else
+    --> [No] Continue
+endif
+
+--> (*)
+
+@enduml
