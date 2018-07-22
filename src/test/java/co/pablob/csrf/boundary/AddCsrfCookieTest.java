@@ -22,7 +22,7 @@ public class AddCsrfCookieTest {
     @Test
     public void csrfShouldBeAdded() throws Exception {
         // Given: A Filter and a response context
-        AddCsrfCookie addCsrfCookie = new AddCsrfCookie();
+        AddCsrfCookieFilter addCsrfCookie = new AddCsrfCookieFilter();
 
         MultivaluedMap<String, Object> headers = new MultivaluedHashMap<>();
         ContainerResponseContext responseContextMock = mock(ContainerResponseContext.class);
