@@ -41,7 +41,7 @@ public class CsrfValidatorFilter implements ContainerRequestFilter {
 
     @Override
     public void filter(ContainerRequestContext requestContext) {
-        if (shouldNotValidateMethod(requestContext.getMethod())) {
+        if (methodAllowedValidator.isMethodAllowed(requestContext.getMethod())) {
             return; // Continue
         }
 
@@ -78,10 +78,6 @@ public class CsrfValidatorFilter implements ContainerRequestFilter {
     private boolean isCookieValid(Cookie cookie) {
         return Objects.nonNull(cookie)
                 && isValidValue(cookie.getValue());
-    }
-
-    private boolean shouldNotValidateMethod(String method) {
-        return !methodAllowedValidator.isMethodAllowed(method);
     }
 
     private Optional<String> getCsrfParameter(ContainerRequestContext requestContext) {
