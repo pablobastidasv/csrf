@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 public class AddCsrfCookieTest {
 
     @Test
-    public void csrfShouldBeAdded() throws Exception {
+    public void csrfShouldBeAdded()  {
         // Given: A Filter and a response context
         AddCsrfCookieFilter addCsrfCookie = new AddCsrfCookieFilter();
 
@@ -32,7 +32,7 @@ public class AddCsrfCookieTest {
         when(servletContext.getContextPath()).thenReturn("/");
         addCsrfCookie.servletContext = servletContext;
 
-        // Then: when filter is excecuted
+        // When: when filter is excecuted
         addCsrfCookie.filter(null, responseContextMock);
 
         // Then
@@ -59,8 +59,5 @@ public class AddCsrfCookieTest {
 
         // Path must be /
         assertEquals("/", xsrfCookie.getPath());
-
-        // Path must be secure
-        assertTrue(xsrfCookie.isSecure());
     }
 }

@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import javax.annotation.Priority;
 import javax.inject.Inject;
-import javax.servlet.ServletContext;
 import javax.ws.rs.Priorities;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
@@ -16,7 +15,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.ext.Provider;
 
-import co.pablob.csrf.contol.PathAllowedValidator;
+import co.pablob.csrf.control.PathAllowedValidator;
 import co.pablob.csrf.control.AuthenticatedRequestValidator;
 import co.pablob.csrf.control.MethodAllowedValidator;
 

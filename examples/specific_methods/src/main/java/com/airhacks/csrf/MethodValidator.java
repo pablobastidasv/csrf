@@ -1,6 +1,7 @@
 package com.airhacks.csrf;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -14,11 +15,13 @@ public class MethodValidator extends MethodAllowedValidator {
 
     @PostConstruct
     public void init(){
-        methodsAllowed = new ArrayList<>();
-        methodsAllowed.add("GET");
-        methodsAllowed.add("TRACE");
-        methodsAllowed.add("OPTIONS");
-        methodsAllowed.add("HEAD");
+        List<String> methods = new ArrayList<>();
+        methods.add("GET");
+        methods.add("TRACE");
+        methods.add("OPTIONS");
+        methods.add("HEAD");
+
+        this.methodsAllowed = Collections.synchronizedList(methods);
     }
 
     @Override

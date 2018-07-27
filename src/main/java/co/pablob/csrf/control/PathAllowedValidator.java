@@ -1,4 +1,4 @@
-package co.pablob.csrf.contol;
+package co.pablob.csrf.control;
 
 public class PathAllowedValidator {
 
