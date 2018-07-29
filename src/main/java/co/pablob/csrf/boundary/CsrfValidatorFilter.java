@@ -25,7 +25,7 @@ import static co.pablob.csrf.entity.Constants.CSRF_HEADER_NAME;
 @Provider
 @PreMatching
 @Priority(CsrfValidatorFilter.PRIORITY)
-public class CsrfValidatorFilter implements ContainerRequestFilter {
+public final class CsrfValidatorFilter implements ContainerRequestFilter {
 
     static final int PRIORITY = Priorities.AUTHENTICATION + 1;
 
