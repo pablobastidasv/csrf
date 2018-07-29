@@ -1,8 +1,5 @@
 == What is CSRF
 
-//[plantuml,activity,svg,align="center"]
-//----
-//include::flow.puml[]
-//----
+=== CSRF validation Flow
 
 plantuml::flow.puml[format=svg, alt="CSRF validation flow", align="center"]

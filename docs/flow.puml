@@ -1,7 +1,5 @@
 @startuml
 
-title CSRF validation flow \n
-
 skinparam activity {
   BackgroundColor<< Continue >> #99ff99
   BackgroundColor<< 403 >> #ff8080
