@@ -1,4 +1,5 @@
 @startuml
+skinparam handwritten true
 
 skinparam activity {
   BackgroundColor<< Continue >> #99ff99
